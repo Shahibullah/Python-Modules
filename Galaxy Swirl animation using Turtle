@@ -1,0 +1,27 @@
+import turtle, colorsys
+
+# Setup
+turtle.bgcolor("black")
+t = turtle.Turtle()
+t.speed(0)
+turtle.colormode(255)
+
+n = 36
+hue_step = 1 / n
+
+hue = 0
+
+# Draw galaxy swirl
+for i in range(360):
+    col = colorsys.hsv_to_rgb(hue, 1, 1)
+    r, g, b = [int(x * 255) for x in col]
+    t.pencolor(r, g, b)
+
+    t.circle(i, 60)  # Draw a circle segment
+    t.left(10)
+
+    hue += hue_step
+    if hue >= 1:
+        hue = 0
+
+turtle.done()
